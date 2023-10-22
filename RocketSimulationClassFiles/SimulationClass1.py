@@ -1,11 +1,20 @@
 import numpy as np
 import RocketSimulationClassFiles as rocket
-from RocketSimulationClassFiles import rocketVersionFiles
-
 import rocketVersionFiles
 
 
 class SimulationClass1:
+    #-----------------------------------------------------------------------
+    #   METHOD: SimulationClass1 (1 means layer 1)
+    #   Top layer
+    #
+    #   INPUTS \..........................................................
+    #     - <input> (struct): Selected Rocket (from run file)
+    #     - Calls rocketVersionFiles to access rocket info
+    #     - Calls next level (level 2): rocketClass, utilityClass
+    #   OUTPUTS ............................................................
+    #       No outputs
+    #-----------------------------------------------------------------------
     def __init__(self, selectedInput):
         if not selectedInput:
             raise Exception('ERROR: no rocket input selected')
@@ -22,6 +31,6 @@ class SimulationClass1:
             ####rocketInput.yaml file might need to be changed#### (IF CHANGING TO 3D)
             return rocketVersionFiles.houbolt_jr_single(
                 'RocketSimulationClassFiles/rocketVersionFiles/rocketInput.yaml')
-        # elif input_selector == ""
+        ##elif input_selector == ""
         else:
             raise Exception('Invalid rocket input')
