@@ -1,0 +1,106 @@
+---
+engine:
+  name: utat_test                                               # Engine name
+  MFG: UTAT                                                     # Engine manufacturer
+  engfile: utat_test.rse                                        # Name of output engine file
+
+settings:
+  efficiency: 0.9 # is 0.9 really attainable? 0.8?              # Combustion efficiency
+  flightType: 2DOF                                              # Flight dynamics type
+  cnv: 6894.757                                                 # Psi to Pa
+  optAltFac: 0.66                                               # Optimization altitude factor                      [N/A]
+  dPtol: 700                                                    # Pressure drop tolerance                           [Pa]
+  npr_inc: 1.0e-06                                              # Pressurant increment
+  OF_i: 1                                                       # initial OF value
+  OF_f: 5                                                       # final OF value
+  num_OF: 20                                                    # final OF timestep
+  OF: 3                                                         # Design Ox/Fuel ratio                              [double]
+  fluidModel: empirical                                         # Fluid model for nitrous oxide
+  LRail: 5                                                      # Launch rail length
+  numTanks: 0                                                   # Number of tanks?
+
+mass:
+  url: 1aMlNNq1Of8uMEjFZNS5RNAU0nOtnL61rxDccyHFwKFM
+  dry: 50.41
+
+sim:
+  numpt: 100                                                    # Discretization points                             [integer]
+  relax: 0.3                                                    # Relaxation factor                                 [double, 0 < relax < ]
+  altConvCrit: 50                                               # Altitude convergence crit                         [m]
+  altBO: 1000
+
+fPres:
+  name: N2                                                      # Nitrogen                                          [char]
+  fluidtype: Pressurant                                         # Fluid type                                        [str]
+  frac: 100                                                     # Fraction                                          [#]
+  MW: 28                                                        # Molar mass                                        [g/mol]
+  Cp: 28883                                                     # Heat capacity                                     [J/kmol K]
+  mTank: 1.78                                                   # Tank mass                                         [kg]
+  lTank: 0.2                                                    # READ FROM MASS BUDGET                             [m]
+  vTank: 0.002                                                  # READ FROM MASS BUDGET                             [m^3]
+  tTank: 0.003175                                               # Tank thickness                                    [m]
+  offset: 0                                                     # Distance till next comp.                          [m]
+  qdot: 300                                                     # Heat flux                                         [W]
+  Tinit: 298                                                    # Initial temperature                               [K]
+  Pinit: 3500                                                   # Initial pressure                                  [psi]
+  Rhoinit: 250.78                                               # Initial density                                   [kg/m^3]
+
+fuel:
+  isPropellant: true                                            # Propellant flag                                   [bool]
+  fluidtype: Fuel                                               # Propellant type                                   [char]
+  name: C2H5OH                                                  # Propellant name                                   [char]
+  isPressurized: true                                           # Pressurization flag                               [bool]
+  pressurantOrder: fwd                                          # Pressurant order                                  [str]
+  pressurant: fPres                                             # Input struct name                                 [str]
+  blowdownMode: constantMdot                                    # Blowdown mode                                     [str]
+  frac: 100                                                     # Fraction                                          [#]
+  MW: 46.07                                                     # Molar mass                                        [g/mol]
+  tTank: 0.003175                                               # Tank thickness                                    [m]?
+  mTank: 3                                                      # Tank mass                                         [kg]?
+  lTank: 0.27                                                   # READ FROM MASS BUDGET                             [m]
+  ullage: 0.05                                                  # Fraction of unfilled space in tank                [#]
+  mInit: 2.33                                                   # Initial mass                                      [m]
+  Tinit: 298                                                    # Initial temperature                               [K]
+  Pinit: 525                                                    # Initial pressure                                  [psi]
+  Rhoinit: 788.4                                                # Initial density                                   [kg/m^3]
+  order: 1                                                      # Order inside rocket                               [integer]
+  offset: 0.31                                                  # Distance till next comp.                          [m]
+
+oxPres:
+  name: N2                                                      # Nitrogen                      [str]
+  fluidtype: Pressurant                                         # Fluid type                    [str]
+  frac: 100                                                     # Fraction                      [#]
+  MW: 28                                                        # Molar mass                    [g/mol]
+  Cp: 28883                                                     # Heat capacity                 [J/kmol K]
+  mTank: 0.788                                                  # Tank mass                     [kg]?
+  lTank: 0.2                                                    # READ FROM MASS BUDGET         [m]
+  vTank: 0.002                                                  # READ FROM MASS BUDGET         [m^3]
+  tTank: 0.003175                                               # Tank thickness                [m]?
+  offset: 0.1                                                   # Distance till next comp.      [m]
+  qdot: 300                                                     # Heat flux                     [W]
+  Tinit: 298                                                    # Initial temperature           [K]?
+  Pinit: 3500                                                   # Initial pressure              [psi]?
+  Rhoinit: 250.78                                               # Initial density               [kg/m^3]?
+
+ox:
+  isPropellant: true                                            # Propellant flag                                   [bool]
+  fluidtype: Oxidizer                                           # Propellant type                                   [str]
+  name: N2O                                                     # Propellant name                                   [str]
+  isPressurized: true                                           # Pressurization flag                               [bool]
+  pressurantOrder: fwd                                          # Pressurant order                                  [str]
+  pressurant: oxPres                                            # Input struct name                                 [str]
+  blowdownMode: constantPressure                                # Blowdown mode                                     [str]
+  frac: 100                                                     # Fraction                                          [#]
+  MW: 44.013                                                    # Molar mass                                        [g/mol]
+  mInit: 7                                                      # Initial oxidizer mass                             [kg]
+  Tinit: 278                                                    # Initial temperature                               [K]
+  Pinit: 525                                                    # Initial pressure                                  [psi]
+  Rhoinit: 882.4013                                             # Initial density                                   [kg/m^3]
+  ullage: 0.05                                                  # Fraction of unfilled space in tank                [#]
+  tTank: 0.003175                                               # Tank thickness                                    [m]?
+  mTank: 4.8                                                    # Tank mass                                         [kg]
+  order: 2                                                      # Order inside rocket                               [integer]
+  offset: 0.31                                                  # Distance till next comp.                          [m]
+
+design:
+  type: single                                                  # Single or Batch
