@@ -1,7 +1,7 @@
-import RocketSimulationClassFiles as rocket
+import RocketSimulationClassFiles as Rocket
 
 rocketVersion = 'houbolt_jr_single'
-instance1 = rocket.SimulationClass1(rocketVersion)
+instance1 = Rocket.SimulationClass1(rocketVersion)
 instance1.simulate()
 print("Complete")
 
