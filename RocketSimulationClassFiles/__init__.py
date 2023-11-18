@@ -5,3 +5,4 @@
 from .SimulationClass1 import SimulationClass1
 from .RocketClass2 import RocketClass2
 from .UtilityClass2 import UtilityClass2
+from .PropertyClass2 import PropertyClass2
