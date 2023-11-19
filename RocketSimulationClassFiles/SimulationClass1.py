@@ -28,17 +28,49 @@ class SimulationClass1:
             # add parameters to rocketClass2
             #not fill in yet, so will give an error
             self.rocket = Rocket.RocketClass2(self.rocketSpecs)
-            self.utilityClassInfo = Rocket.UtilityClass2(self.rocketSpecs)
+            self.utility = Rocket.UtilityClass2(self.rocketSpecs)
 
+            #still need the 3 variables here (add later)
 
             #load rocket properties - PropertyClass2
             self.flight = Rocket.PropertyClass2()
-            #listing out properties
+            #listing out properties (WITH 6DOF)
 
-            #make sure that this exists in the input later
+            #time
+            self.flight.t = self.utility.zeroArray()
+            #position
+            self.flight.x = self.utility.zeroArray()
+            self.flight.y = self.utility.zeroArray()
+            self.flight.z = self.utility.zeroArray()
+            #velocity
+            self.flight.u = self.utility.zeroArray()
+            self.flight.v = self.utility.zeroArray()
+            self.flight.w = self.utility.zeroArray()
+            #total velocity
+            self.flight.V = self.utility.zeroArray()
+            #acceleration
+            self.flight.ax = self.utility.zeroArray()
+            self.flight.ay = self.utility.zeroArray()
+            self.flight.az = self.utility.zeroArray()
+            #angle
+            self.flight.phi = self.utility.zeroArray()  # Roll angle
+            self.flight.theta = self.utility.zeroArray()  # Pitch angle
+            self.flight.psi = self.utility.zeroArray()  # Yaw angle
+            #angle velocity
+            self.flight.p = self.utility.zeroArray()  # Roll rate
+            self.flight.q = self.utility.zeroArray()  # Pitch rate
+            self.flight.r = self.utility.zeroArray()  # Yaw rate
+
+            #Mach
+            self.flight.Ma = self.utility.zeroArray()
+            #gravitational velocity?? (not sure)
+            self.flight.g = self.utility.zeroArray()
+
+            self.flight.altBO = self.rocketSpecs["sim"]["altBO"]
+
+            # make sure that this exists in the input later
+            #self.flight.type     = self.input["settings"]["flightType"]
             self.flight.type = self.rocket.get_flight_type()
-
-
 
 
 
