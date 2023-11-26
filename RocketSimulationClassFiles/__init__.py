@@ -7,3 +7,5 @@ from .RocketClass2 import RocketClass2
 from .UtilityClass2 import UtilityClass2
 from .PropertyClass2 import PropertyClass2
 from .PropulsionClass3 import PropulsionClass3
+from .CombustionClass4 import CombustionClass4
+from .NozzleClass4 import NozzleClass4
