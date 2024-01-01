@@ -7,6 +7,8 @@ class RocketClass2:
         print("Building Rocket Class")
         self.input = input
         self.propulsion = rocket.PropulsionClass3(input)
+        #class not
+
 
         #add airfram and utilities later
 
