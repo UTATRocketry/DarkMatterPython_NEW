@@ -74,6 +74,7 @@ class SimulationClass1:
 
 
 
+    #load variable fucntion in old file
     def getRocketSpecs(self, input_selector):
         if input_selector == "houbolt_jr_single":
             # rocketInput.yaml file might need to be changed (IF CHANGING TO 3D)
@@ -83,13 +84,12 @@ class SimulationClass1:
         else:
             raise Exception('Invalid rocket input')
 
-    def simulate(self):
-        print("Running Simulation")
 
     def setSimulationDynamicsType(self):
     # -----------------------------------------------------------------------
     #   Previous code only has 2dof
     #   Now chnaged to 6DOF
+    #   Only code in 6DoF, leave the 2DoF for later
     # -----------------------------------------------------------------------
         if self.flight.type == '6DOF':
             self.flight.get = self.get6DOFflightDynamics
@@ -99,7 +99,16 @@ class SimulationClass1:
             raise ValueError(f"Undefined flight type: {self.flight.type}")
 
     def get2DOFflightDynamics(self):
+        #not implementing this until 6DOF is done
         pass
 
     def get6DOFflightDynamics(self):
+    #   --------------------------------------------------------------------
+    #   get 6DoF flight Dynamics
+    #   Need to research furthur here
+    #   --------------------------------------------------------------------
         pass
+
+
+    def simulate(self):
+        print("Running Simulation")
