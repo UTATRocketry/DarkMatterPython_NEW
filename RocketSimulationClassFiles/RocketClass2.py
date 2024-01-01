@@ -7,12 +7,17 @@ class RocketClass2:
         print("Building Rocket Class")
         self.input = input
         self.propulsion = rocket.PropulsionClass3(input)
-        #class not
+        self.airframe = rocket.airframeClass3()
+        self.utilities = rocket.UtilityClass2(input)
+        self.airframe.drag_file = "DMpkg/Drag_Data_Houbolt_Jr.csv"
+        self.drag_model()
 
 
-        #add airfram and utilities later
 
     def get_flight_type(self):
         #   Settings' is attribute storing a dict-like object : 'flightType'
         #   Add later
         return self.settings['flightType']
+    def drag_model(self):
+        drag_data = np.genfromtxt(self.airframe.drag_file, delimiter = ',')
+        self.airframe.cd = np.polynomial.Polynomial.fit(drag_data[:,0], drag_data[:,1], deg=3)
