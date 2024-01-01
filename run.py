@@ -1,8 +1,15 @@
 import RocketSimulationClassFiles as Rocket
 
-rocketVersion = 'houbolt_jr_single'
-instance1 = Rocket.SimulationClass1(rocketVersion)
-instance1.simulate()
-print("Complete")
+def main():
+    rocketVersion = 'houbolt_jr_single'
+    instance1 = Rocket.SimulationClass1(rocketVersion)
+    instance1.simulate()
+    print("Complete")
 
-#from RocketSimulationClassFiles.showOutputMenu import createAllPlots, showOutputMenu
+    # Uncomment the following lines if you want to use them
+    # from RocketSimulationClassFiles.showOutputMenu import createAllPlots, showOutputMenu
+    # createAllPlots()
+    # showOutputMenu()
+
+if __name__ == "__main__":
+    main()

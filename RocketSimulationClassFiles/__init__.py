@@ -9,3 +9,4 @@ from .PropertyClass2 import PropertyClass2
 from .PropulsionClass3 import PropulsionClass3
 from .CombustionClass4 import CombustionClass4
 from .NozzleClass4 import NozzleClass4
+from .TankClass3 import TankClass3
