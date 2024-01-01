@@ -10,3 +10,5 @@ from .PropulsionClass3 import PropulsionClass3
 from .CombustionClass4 import CombustionClass4
 from .NozzleClass4 import NozzleClass4
 from .TankClass3 import TankClass3
+from .PressurantTankClass4 import PressurantTankClass4
+from .PropellantTankClass4 import PropellantTankClass4
