@@ -80,3 +80,99 @@ class PressurantTankClass4:
     #this is the same as before
     #other functions calling down and fetches the CoG
     #not called within this function
+
+
+    #no need to change. works for 6DoF
+    def getBlowdown(self):
+        '''
+        -----------------------------------------------------------------------
+           METHOD: getBlowdown
+           Selects and calls appropriate blowdown function depending on the
+           type of blowdown specified in the input file.
+
+           INPUTS: NONE
+           OUTPUTS: NONE
+        -----------------------------------------------------------------------
+        '''
+
+        if self.name == "N2":
+            self.PRES_blowdown()
+        else:
+            raise Exception(
+                "pressurantTankClass > getBlowdown(): Function has not been specialized for fluid name" + self.name)
+
+    def setBlowdownCharacteristics(self, input):
+        '''
+        -----------------------------------------------------------------------
+           METHOD: setBlowdownCharacteristics
+           Selects the functions that computes the blowdown characteristics for
+           the given pressurant.
+
+           INPUTS: NONE
+           OUTPUTS: NONE
+        -----------------------------------------------------------------------
+        '''
+
+        if self.name == 'N2':
+            self.pressurant.bdChars = self.bd_Chars_NITROGEN
+        else:
+            raise Exception(
+                "pressurantTankClass > getBlowdown(): Function has not been specialized for fluid name" + self.name)
+
+    def bd_Chars_NITROGEN(self, input):
+        '''
+        -----------------------------------------------------------------------
+           METHOD: bd_Chars_NITROGEN
+           Function that details the blowdown characteristics of the selected
+           pressurant.
+
+           INPUTS \..........................................................
+           - <input> (struct): A structure that contains all input variables
+           OUTPUTS ............................................................
+            NONE
+        -----------------------------------------------------------------------
+        '''
+        ma = input.m
+        V = input.V
+        T = input.T
+        P = input.P
+        mdot = input.mdot
+        qdot = input.qdot
+
+        R = self.util.n2R
+        cnv = self.util.cnv
+
+        Zt = self.util.get_dZdT_N2(T, P / cnv)
+        Zp = self.util.get_dZdP_N2(T, P / cnv) / cnv
+        Z = self.util.coolprop('Z', 'P', P, 'T', T, 'N2')
+        cv = self.util.coolprop('O', 'P', P, 'T', T, 'N2')
+
+        dPdt = (ma * R * Z ** 2 + P * V * Zt) * qdot / (V * cv * (ma * (Z - P * Zp))) - mdot * (
+                    (cv + Z * R) * ma * Z + P * V * Zt) * (P / (ma * cv)) / (ma * (Z - P * Zp))
+        dZdt = (ma * R * Z ** 2 * Zp + V * Z * Zt) * dPdt / (ma * R * Z ** 2 + Zt * P * V) - Zt * (
+                    P * V * Z / ma) * mdot / (ma * R * Z ** 2 + Zt * P * V)
+        dTdt = V * (dPdt / (ma * Z) - dZdt * P / (ma * Z ** 2) - mdot * P / (ma ** 2 * Z)) / R
+
+        self.dPdt = dPdt
+        self.dTdt = dTdt
+        return self
+
+    def setPressurantMdot(self, mdot):
+        '''
+        -----------------------------------------------------------------------
+           METHOD: setPressurantMdot
+            Initializes the Mdot of the selected pressurant using the inputted
+            mdot. It initializes said mdot and associates it with the
+            pressurantClass object.
+
+           INPUTS .............................................................
+            - mdot (list float): A list of floats containing the mdot evolution
+            of the pressurant over time. It is a part of the input structure.
+           OUTPUTS: NONE
+        -----------------------------------------------------------------------
+        '''
+        self.pressurant.mdot = mdot
+
+
+#PRES_BLOWDOWN needs to be changed for 6DoF
+#need rewrite
