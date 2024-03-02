@@ -4,6 +4,11 @@ from CoolProp.CoolProp import PropsSI
 import numpy as np
 
 
+def cellss(x, y):
+
+    output = [[[] for _ in range(y)] for _ in range(x)]
+    print("Cells x:", x, "y:", y, "output:", output)
+    return output
 class UtilityClass2:
 
     #optimized cellss function
@@ -17,8 +22,6 @@ class UtilityClass2:
     #   OUTPUTS ............................................................
     #     - <output> (list):    Returns list with x rows and y columns
     #-----------------------------------------------------------------------
-    def cellss(x, y):
-        return [[[] for _ in range(y)] for _ in range(x)]
     def __init__(self, input):
         print("Building Utility Class")
 

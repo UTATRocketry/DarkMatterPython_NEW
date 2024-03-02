@@ -76,8 +76,10 @@ class SimulationClass1:
 
     #load variable fucntion in old file
     def getRocketSpecs(self, input_selector):
+        print("Building Rocket Specs")
         if input_selector == "houbolt_jr_single":
             # rocketInput.yaml file might need to be changed (IF CHANGING TO 3D)
+            print("Input Selected: houbolt_jr_single")
             return rocketVersionFiles.houbolt_jr_single(
                 'RocketSimulationClassFiles/rocketVersionFiles/rocketInput.yaml')
         # elif input_selector == ""
