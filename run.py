@@ -1,6 +1,7 @@
 import RocketSimulationClassFiles as Rocket
 
 def main():
+    print("start")
     rocketVersion = 'houbolt_jr_single'
     instance1 = Rocket.SimulationClass1(rocketVersion)
     instance1.simulate()

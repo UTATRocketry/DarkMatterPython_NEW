@@ -1,6 +1,6 @@
 import numpy as np
 import RocketSimulationClassFiles as Rocket
-import rocketVersionFiles
+from RocketSimulationClassFiles import rocketVersionFiles
 
 
 class SimulationClass1:
