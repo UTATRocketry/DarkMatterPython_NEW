@@ -1,4 +1,5 @@
 import RocketSimulationClassFiles as rocket
+from RocketSimulationClassFiles.UtilityClass2 import cellss
 import numpy as np
 
 class TankClass3:
@@ -17,7 +18,7 @@ class TankClass3:
         self.input = input
         self.designVars = input["design"]
         #calls utility class, changed call structure
-        self.tanks = rocket.UtilityClass2.cellss(np.shape(input['props'])[0],
+        self.tanks = cellss(np.shape(input['props'])[0],
                             1)  # can't change to numpy array as elmts of array are propellant tank class objects (line 19)
         self.tank_inputs = input["props"]
         self.create_tanks()
@@ -35,9 +36,9 @@ class TankClass3:
         for i in range(0, len(self.tank_inputs)):
             type = self.tank_inputs[i][0]
             if (type == 'Fuel') or (type == 'Oxidizer'):
-                self.tanks[i][0] = rocket.propellantTankClass(self.input, self.input['props'][i][1])
+                self.tanks[i][0] = rocket.PropellantTankClass4(self.input, self.input['props'][i][1])
             elif (type == 'Pressurant'):
-                self.tanks[i][0] = rocket.pressurantTankClass(self.input, self.input['props'][i][1])
+                self.tanks[i][0] = rocket.PressurantTankClass4(self.input, self.input['props'][i][1])
             else:
                 raise Exception('Incorrect tank type.')
 

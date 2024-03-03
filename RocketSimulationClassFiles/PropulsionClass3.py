@@ -6,7 +6,7 @@ class PropulsionClass3:
         print("Building Propulsion Class")
         self.input = input
         #utility class should be done
-        self.util = Rocket.utilitiesClass2(self.input)
+        self.util = Rocket.UtilityClass2(self.input)
 
         #variables below from spec
         self.info = self.input["engine"]
@@ -56,6 +56,11 @@ class PropulsionClass3:
         self.nozzle = Rocket.NozzleClass4(input)
 
         self.propellants = Rocket.TankClass3(input)
+
+        '''
+        propellants.tanks is an 2D array. np.shape return size of array. 
+        Gives number of rows in array, which is number of tanks
+        '''
         self.settings['numTanks'] = np.shape(self.propellants.tanks)[0]
 
     #COPIED ALL METHODS ASSOCIATED WITH self.Performance()

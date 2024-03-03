@@ -40,12 +40,12 @@ class UtilityClass2:
 
         self.coolProp_conversions = ('C2H5OH', 'Ethanol')
 
-        self.noxProp = Rocket.propertyClass()
+        self.noxProp = Rocket.PropertyClass2()
         self.noxProp.rho_c = 452
         self.noxProp.Tc = 309.57
         self.noxProp.Pc = 7.251e6
 
-        self.noxProp.Coefs = Rocket.propertyClass()
+        self.noxProp.Coefs = Rocket.PropertyClass2()
         self.noxProp.Coefs.V1 = 96.512
         self.noxProp.Coefs.V2 = -4045
         self.noxProp.Coefs.V3 = -12.277
@@ -84,15 +84,15 @@ class UtilityClass2:
         self.noxProp.Coefs.q3 = 1.3779
         self.noxProp.Coefs.q4 = -4.051
 
-        self.nitrogen = Rocket.propertyClass()
-        self.nitrogen.Coefs = Rocket.propertyClass()
+        self.nitrogen = Rocket.PropertyClass2()
+        self.nitrogen.Coefs = Rocket.PropertyClass2()
         self.nitrogen.Coefs.C1 = 0.28883e5
         self.nitrogen.Coefs.C2 = 0
         self.nitrogen.Coefs.C3 = 0
         self.nitrogen.Coefs.C4 = 0
         self.nitrogen.Coefs.C5 = 0
 
-        self.nitrogen.h = Rocket.propertyClass()
+        self.nitrogen.h = Rocket.PropertyClass2()
         self.nitrogen.h.theta = np.array([0.90370032155133, \
                                           -3.99164830787538, \
                                           4.44554878990612, \
@@ -113,7 +113,7 @@ class UtilityClass2:
                                           2.74997487910292, \
                                           2.36611999082672])
 
-        self.nitrogen.l = Rocket.propertyClass()
+        self.nitrogen.l = Rocket.PropertyClass2()
 
         self.nitrogen.l.theta = np.array([0.46742656471647, \
                                           -0.53799565472298, \
@@ -143,6 +143,7 @@ class UtilityClass2:
         self.coolprop_alias = cellss(1, 2)
         self.coolprop_alias[0][0] = 'C2H5OH'
         self.coolprop_alias[0][1] = 'Ethanol'
+
 
     '''
     np.zero(numRows, numCols)
