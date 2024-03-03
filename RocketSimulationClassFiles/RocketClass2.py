@@ -23,6 +23,8 @@ class RocketClass2:
         self.input = input
         self.propulsion = rocket.PropulsionClass3(input)
         self.airframe = rocket.propertyClass2()
+
+
         self.utilities = rocket.UtilityClass2(input)
         self.airframe.drag_file = "DMpkg/Drag_Data_Houbolt_Jr.csv"
         self.drag_model()

@@ -143,6 +143,14 @@ class UtilityClass2:
         self.coolprop_alias = cellss(1, 2)
         self.coolprop_alias[0][0] = 'C2H5OH'
         self.coolprop_alias[0][1] = 'Ethanol'
+
+    '''
+    np.zero(numRows, numCols)
+    here input->sim->numpt is 100 in the data for 100 rows and 1 col
+    all elements of the array filled with 0
+    
+    array([[0],[0],[0]..100 in total)
+    '''
     def zeroArray(self):
         return np.zeros((self.input["sim"]["numpt"], 1))
 

@@ -33,7 +33,9 @@ class PropulsionClass3:
         #       "cstar", "Pe", "thrust", "Isp")
         #   All the getter functions are below
         #
-        #   Copied the code for now (adjust if needed)
+        #   Attached to each variable is another dictionary of 0 arrays
+        #   Each array row = 100, col = 1
+        #
         #   --------------------------------------------------------------
         self.performance = {"Mdotox" : self.util.zeroArray(), "Mdotf" : self.util.zeroArray(),
                          "Mdot" : self.util.zeroArray(),
@@ -53,7 +55,7 @@ class PropulsionClass3:
         self.combustion = Rocket.CombustionClass4(input)
         self.nozzle = Rocket.NozzleClass4(input)
 
-        self.propellants = Rocket.tankSystemClass(input)
+        self.propellants = Rocket.TankClass3(input)
         self.settings['numTanks'] = np.shape(self.propellants.tanks)[0]
 
     #COPIED ALL METHODS ASSOCIATED WITH self.Performance()
