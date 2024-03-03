@@ -3,19 +3,25 @@ import numpy as np
 class PropulsionClass3:
 
     def __init__(self, input):
+        print("Building Propulsion Class")
         self.input = input
         #utility class should be done
-        self.util = Rocket.utilitiesClass(self.input)
+        self.util = Rocket.utilitiesClass2(self.input)
 
+        #variables below from spec
         self.info = self.input["engine"]
-        #self.info is a dictionary (see input.yaml for properties)
+
 
         self.settings = self.input['settings']
         ofi = self.settings['OF_i']  #Oxidizer-Fuel ratio initial
         off = self.settings['OF_f']  #Oxidizer-Fuel ratio final
         nf = self.settings['num_OF'] #number of Oxidizer-Fuel ratios
         self.settings['OF_Vec'] = np.linspace(ofi, off, num=nf) #create a vector
-
+        ''' NP linspace
+        np.linspace (startNumber, finalNumber, number of evenly spaced points)
+        top and bottom inclusive
+        start from ofi, ends at off. interval = nf
+        '''
 
         #   --------------------------------------------------------------
         #   Did not change from 2DoF structure

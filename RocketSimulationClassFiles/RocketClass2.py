@@ -19,6 +19,7 @@ class RocketClass2:
     def __init__(self, input):
         #no need to check input is there, already checked in upper levels
         print("Building Rocket Class")
+        #input is rocket specs
         self.input = input
         self.propulsion = rocket.PropulsionClass3(input)
         self.airframe = rocket.propertyClass2()
