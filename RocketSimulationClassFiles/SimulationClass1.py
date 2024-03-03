@@ -20,13 +20,31 @@ class SimulationClass1:
             raise Exception('ERROR: no rocket input selected')
         else:
             print("Building Simulation")
-            #loading variables
+            #loading Rocket Variables in Dictionary format
             self.rocketSpecs = self.getRocketSpecs(selectedInput)
             print("No errors: RocketSpecs Retrieval successful")
+
+            ''' Rocket Specs (DICTIONARY OF DICTIONARIES)
+            'engine': {'name': 'utat_test', 'MFG': 'UTAT', 'engfile': 'utat_test.rse'}
+            'settings': {'efficiency': 0.9, 'flightType': '2DOF', 'cnv': 6894.757, 'optAltFac': 0.66, 'dPtol': 700, 'npr_inc': 1e-06, 'OF_i': 1, 'OF_f': 5, 'num_OF': 20, 'OF': 3, 'fluidModel': 'empirical', 'LRail': 5, 'numTanks': 0}
+            'mass': {'url': '1aMlNNq1Of8uMEjFZNS5RNAU0nOtnL61rxDccyHFwKFM', 'dry': 50.41}
+            'sim': {'numpt': 100, 'relax': 0.3, 'altConvCrit': 50, 'altBO': 1000}
+            'fPres': {'name': 'N2', 'fluidtype': 'Pressurant', 'frac': 100, 'MW': 28, 'Cp': 28883, 'mTank': 1.78, 'lTank': 0.2, 'vTank': 0.002, 'tTank': 0.003175, 'offset': 0, 'qdot': 300, 'Tinit': 298, 'Pinit': 24131649.5, 'Rhoinit': 250.78, 'mInit': 0.50156}
+            'fuel': {'isPropellant': True, 'fluidtype': 'Fuel', 'name': 'C2H5OH', 'isPressurized': True, 'pressurantOrder': 'fwd', 'pressurant': 'fPres', 'blowdownMode': 'constantMdot', 'frac': 100, 'MW': 46.07, 'tTank': 0.003175, 'mTank': 3, 'lTank': 0.18522755773692448, 'ullage': 0.05, 'mInit': 2.33, 'Tinit': 298, 'Pinit': 3619747.425, 'Rhoinit': 788.4, 'order': 1, 'offset': 0.31, 'vTank': 0.003103120243531203}
+            'oxPres': {'name': 'N2', 'fluidtype': 'Pressurant', 'frac': 100, 'MW': 28, 'Cp': 28883, 'mTank': 0.788, 'lTank': 0.2, 'vTank': 0.002, 'tTank': 0.003175, 'offset': 0.1, 'qdot': 300, 'Tinit': 298, 'Pinit': 24131649.5, 'Rhoinit': 250.78, 'mInit': 0.50156},
+            'ox': {'isPropellant': True, 'fluidtype': 'Oxidizer', 'name': 'N2O', 'isPressurized': True, 'pressurantOrder': 'fwd', 'pressurant': 'oxPres', 'blowdownMode': 'constantPressure', 'frac': 100, 'MW': 44.013, 'mInit': 7, 'Tinit': 278, 'Pinit': 3619747.425, 'Rhoinit': 882.4013, 'ullage': 0.05, 'tTank': 0.003175, 'mTank': 4.8, 'order': 2, 'offset': 0.31, 'vTank': 0.008329543485486706, 'lTank': 0.4971966523361369}
+            'design': {'type': 'single', 'tBurn': [8.4], 'mDotox': [0.8], 'thetaL': [3], 'diameter': [0.1524], 'Pcc': [350], 'OF': [3], 'injCd': [0.4]}
+            'props':
+                ['Pressurant', {'name': 'N2', 'fluidtype': 'Pressurant', 'frac': 100, 'MW': 28, 'Cp': 28883, 'mTank': 1.78, 'lTank': 0.2, 'vTank': 0.002, 'tTank': 0.003175, 'offset': 0, 'qdot': 300, 'Tinit': 298, 'Pinit': 24131649.5, 'Rhoinit': 250.78, 'mInit': 0.50156}, 0
+                ['Fuel', {'isPropellant': True, 'fluidtype': 'Fuel', 'name': 'C2H5OH', 'isPressurized': True, 'pressurantOrder': 'fwd', 'pressurant': 'fPres', 'blowdownMode': 'constantMdot', 'frac': 100, 'MW': 46.07, 'tTank': 0.003175, 'mTank': 3, 'lTank': 0.18522755773692448, 'ullage': 0.05, 'mInit': 2.33, 'Tinit': 298, 'Pinit': 3619747.425, 'Rhoinit': 788.4, 'order': 1, 'offset': 0.31, 'vTank': 0.003103120243531203}, 1]
+                ['Pressurant', {'name': 'N2', 'fluidtype': 'Pressurant', 'frac': 100, 'MW': 28, 'Cp': 28883, 'mTank': 0.788, 'lTank': 0.2, 'vTank': 0.002, 'tTank': 0.003175, 'offset': 0.1, 'qdot': 300, 'Tinit': 298, 'Pinit': 24131649.5, 'Rhoinit': 250.78, 'mInit': 0.50156}, 2]
+                ['Oxidizer', {'isPropellant': True, 'fluidtype': 'Oxidizer', 'name': 'N2O', 'isPressurized': True, 'pressurantOrder': 'fwd', 'pressurant': 'oxPres', 'blowdownMode': 'constantPressure', 'frac': 100, 'MW': 44.013, 'mInit': 7, 'Tinit': 278, 'Pinit': 3619747.425, 'Rhoinit': 882.4013, 'ullage': 0.05, 'tTank': 0.003175, 'mTank': 4.8, 'order': 2, 'offset': 0.31, 'vTank': 0.008329543485486706, 'lTank': 0.4971966523361369}, 3]
+            '''
 
             # get level 2 module (rocket and utility Class)
             # add parameters to rocketClass2
             #not fill in yet, so will give an error
+            #rocket spec contains all the rocket information
             self.rocket = Rocket.RocketClass2(self.rocketSpecs)
             self.utility = Rocket.UtilityClass2(self.rocketSpecs)
 

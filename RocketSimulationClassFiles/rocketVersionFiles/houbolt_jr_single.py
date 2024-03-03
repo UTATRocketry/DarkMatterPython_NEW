@@ -1,6 +1,5 @@
 import math
 import yaml
-import RocketSimulationClassFiles as Rocket
 from RocketSimulationClassFiles.UtilityClass2 import cellss
 
 
@@ -13,8 +12,11 @@ from RocketSimulationClassFiles.UtilityClass2 import cellss
 #   OUTPUTS ............................................................
 #     - <inp_dic>   (Dictionary): Dictionary with inputs from input.yaml file and manual design parameters / calculations
 # -----------------------------------------------------------------------
+
+#loads information about the rocket and return info
 def houbolt_jr_single(inp_path):
     with open(inp_path, "r") as f:
+        #takes input, converts to python dictionary
         inp_dic = yaml.full_load(f)
 
     # conversions and calculations that cannot be handled in the input.yaml file
@@ -56,5 +58,7 @@ def houbolt_jr_single(inp_path):
     inp_dic["props"][3][0] = 'Oxidizer'
     inp_dic["props"][3][1] = inp_dic["ox"]
     inp_dic["props"][3][2] = 3
+    #print(inp_dic)
+
 
     return inp_dic
