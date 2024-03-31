@@ -4,6 +4,17 @@ from CoolProp.CoolProp import PropsSI
 import numpy as np
 
 
+# optimized cellss function
+# -----------------------------------------------------------------------
+#   METHOD: cellss
+#   Creates 2D python list
+#
+#   INPUTS \..........................................................
+#     - <x> (numeric):    Number of rows
+#     - <y> (numeric):    Number of columns
+#   OUTPUTS ............................................................
+#     - <output> (list):    Returns list with x rows and y columns
+# -----------------------------------------------------------------------
 def cellss(x, y):
 
     output = [[[] for _ in range(y)] for _ in range(x)]
@@ -11,17 +22,6 @@ def cellss(x, y):
     return output
 class UtilityClass2:
 
-    #optimized cellss function
-    #-----------------------------------------------------------------------
-    #   METHOD: cellss
-    #   Creates 2D python list
-    #
-    #   INPUTS \..........................................................
-    #     - <x> (numeric):    Number of rows
-    #     - <y> (numeric):    Number of columns
-    #   OUTPUTS ............................................................
-    #     - <output> (list):    Returns list with x rows and y columns
-    #-----------------------------------------------------------------------
     def __init__(self, input):
         print("Building Utility Class")
 
@@ -154,7 +154,7 @@ class UtilityClass2:
     '''
     def zeroArray(self):
         return np.zeros((self.input["sim"]["numpt"], 1))
-
+    #self.input["sim"]["numpt"] == 100
 
 
     #Below 3 Functions does not need to be changed
