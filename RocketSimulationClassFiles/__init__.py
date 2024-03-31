@@ -12,3 +12,4 @@ from .NozzleClass4 import NozzleClass4
 from .TankClass3 import TankClass3
 from .PressurantTankClass4 import PressurantTankClass4
 from .PropellantTankClass4 import PropellantTankClass4
+from .CEA5 import CEA5
