@@ -1,7 +1,11 @@
 import RocketSimulationClassFiles as Rocket
 import numpy as np
-class PropulsionClass3:
+'''
+Construct Propulsion Class
 
+Input: Rocket Specs from simulationClass1
+'''
+class PropulsionClass3:
     def __init__(self, input):
         print("Building Propulsion Class")
         self.input = input
@@ -16,6 +20,7 @@ class PropulsionClass3:
         ofi = self.settings['OF_i']  #Oxidizer-Fuel ratio initial
         off = self.settings['OF_f']  #Oxidizer-Fuel ratio final
         nf = self.settings['num_OF'] #number of Oxidizer-Fuel ratios
+        # from 1 to 5. 20 evenly spaced points based on data
         self.settings['OF_Vec'] = np.linspace(ofi, off, num=nf) #create a vector
         ''' NP linspace
         np.linspace (startNumber, finalNumber, number of evenly spaced points)

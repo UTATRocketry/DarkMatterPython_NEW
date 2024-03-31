@@ -46,6 +46,8 @@ class SimulationClass1:
             #not fill in yet, so will give an error
             #rocket spec contains all the rocket information
             self.rocket = Rocket.RocketClass2(self.rocketSpecs)
+
+
             self.utility = Rocket.UtilityClass2(self.rocketSpecs)
 
             #still need the 3 variables here (add later)

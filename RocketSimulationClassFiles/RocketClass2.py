@@ -21,6 +21,7 @@ class RocketClass2:
         print("Building Rocket Class")
         #input is rocket specs
         self.input = input
+        #in progress
         self.propulsion = rocket.PropulsionClass3(input)
         self.airframe = rocket.propertyClass2()
 
@@ -35,6 +36,11 @@ class RocketClass2:
         #   Settings' is attribute storing a dict-like object : 'flightType'
         #   Add later
         return self.settings['flightType']
+
+    '''
+    Function returns coefficent of drag for the given geometry
+    
+    '''
     def drag_model(self):
         drag_data = np.genfromtxt(self.airframe.drag_file, delimiter = ',')
         self.airframe.cd = np.polynomial.Polynomial.fit(drag_data[:,0], drag_data[:,1], deg=3)
